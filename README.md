@@ -1,5 +1,7 @@
 # GoAuthing
 
+## Replace auth.tsinghua.com to gw.buaa.edu.cn
+
 [![Build Status](https://travis-ci.org/z4yx/GoAuthing.svg?branch=master)](https://travis-ci.org/z4yx/GoAuthing)
 ![GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)
 
