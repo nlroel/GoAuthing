@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/z4yx/GoAuthing.svg?branch=master)](https://travis-ci.org/z4yx/GoAuthing)
 ![GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)
 
-A commandline Tunet (auth4/6.tsinghua.edu.cn, Tsinghua-IPv4) authentication tool.
+A commandline Tunet (gw.buaa.edu.cn, BUAA-IPv4) authentication tool.
 
 ## Download Binary
 
@@ -18,7 +18,7 @@ Simply try `./auth-thu`, then enter your user name and password.
 
 ```
 NAME:
-   auth-thu - Authenticating utility for Tsinghua
+   auth-thu - Authenticating utility for Buaa
 
 USAGE:
    auth-thu [options]
@@ -35,12 +35,12 @@ AUTHORS:
   Nogeek <ritou11@gmail.com>
 
 COMMANDS:
-     auth    (default) Auth via auth4/6.tsinghua
+     auth    (default) Auth via gw.buaa.edu.cn
        OPTIONS:
            --ip value      authenticating for specified IP address
            --no-check, -n  skip online checking, always send login request
            --logout, -o    log out of the online account
-           --ipv6, -6      authenticating for IPv6 (auth6.tsinghua)
+           --ipv6, -6      authenticating for IPv6 (gw.buaa.edu.cn)
            --host value    use customized hostname of srun4000
            --insecure      use http instead of https
      login   Login via net.tsinghua
@@ -63,8 +63,8 @@ The default location of config file is `~/.auth-thu`.
 {
   "username": "your-username",
   "password": "your-password",
-  "host": "auth4.tsinghua.edu.cn",
-  "ip": "166.xxx.xx.xx",
+  "host": "gw.buaa.edu.cn",
+  "ip": "10.xxx.xx.xx",
   "debug": false,
   "useV6": false,
   "noCheck": false,
