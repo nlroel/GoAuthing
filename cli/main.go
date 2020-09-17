@@ -171,7 +171,7 @@ func keepAliveLoop(c *cli.Context, campusOnly bool) (ret error) {
 		}
 		return
 	}
-	targetInside := "https://www.tsinghua.edu.cn/"
+	targetInside := "https://www.buaa.edu.cn/"
 	targetOutside := "http://www.baidu.com/"
 
 	stop := make(chan int, 1)
@@ -216,14 +216,14 @@ func cmdAuth(c *cli.Context) error {
 	domain := settings.Host
 	if len(settings.Host) == 0 {
 		if settings.V6 {
-			domain = "auth6.tsinghua.edu.cn"
+			domain = "gw.buaa.edu.cn"
 		} else {
-			domain = "auth4.tsinghua.edu.cn"
+			domain = "gw.buaa.edu.cn"
 		}
 
 		if len(settings.Ip) == 0 {
 			// Probe the ac_id parameter, required by wireless network
-			// We do this only in Tsinghua, since it requires access to usereg.t.e.c/net.t.e.c
+			// We do this only in buaa, since it requires access to usereg.t.e.c/net.t.e.c
 			if retAcID, err := libauth.GetAcID(); err == nil {
 				acID = retAcID
 			}
@@ -251,7 +251,7 @@ func cmdAuth(c *cli.Context) error {
 		}
 		if len(settings.Ip) != 0 && len(settings.Host) == 0 {
 			// Auth for another IP requires correct NAS ID since July 2020
-			// Tsinghua only
+			// Buaa only
 			if retNasID, err := libauth.GetNasID(settings.Ip, settings.Username, settings.Password); err == nil {
 				acID = retNasID
 			}
@@ -345,7 +345,7 @@ func main() {
 	 auth-thu [options] auth [auth_options]
 	 auth-thu [options] login
 	 auth-thu [options] logout`,
-		Usage:    "Authenticating utility for Tsinghua",
+		Usage:    "Authenticating utility for Buaa",
 		Version:  "1.6",
 		HideHelp: true,
 		Flags: []cli.Flag{
@@ -359,12 +359,12 @@ func main() {
 		Commands: []cli.Command{
 			cli.Command{
 				Name:  "auth",
-				Usage: "(default) Auth via auth4/6.tsinghua",
+				Usage: "(default) Auth via gw.buaa",
 				Flags: []cli.Flag{
 					&cli.StringFlag{Name: "ip", Usage: "authenticating for specified IP address"},
 					&cli.BoolFlag{Name: "no-check, n", Usage: "skip online checking, always send login request"},
 					&cli.BoolFlag{Name: "logout, o", Usage: "log out of the online account"},
-					&cli.BoolFlag{Name: "ipv6, 6", Usage: "authenticating for IPv6 (auth6.tsinghua)"},
+					&cli.BoolFlag{Name: "ipv6, 6", Usage: "authenticating for IPv6 (gw.buaa)"},
 					&cli.StringFlag{Name: "host", Usage: "use customized hostname of srun4000"},
 					&cli.BoolFlag{Name: "insecure", Usage: "use http instead of https"},
 					&cli.BoolFlag{Name: "keep-online, k", Usage: "keep online after login"},
@@ -373,7 +373,7 @@ func main() {
 			},
 			cli.Command{
 				Name:  "login",
-				Usage: "Login via net.tsinghua",
+				Usage: "Login via net.buaa",
 				Flags: []cli.Flag{
 					&cli.BoolFlag{Name: "keep-online, k", Usage: "keep online after login"},
 				},
@@ -381,7 +381,7 @@ func main() {
 			},
 			cli.Command{
 				Name:   "logout",
-				Usage:  "Logout via net.tsinghua",
+				Usage:  "Logout via net.buaa",
 				Action: cmdLogout,
 			},
 			cli.Command{
